@@ -1,10 +1,7 @@
 # sky130ph
 
-Skywater photonics PDK for the 130nm fab foundry
+Skywater photonics PDK for the SKY130 process node.
 
 ## Usage
 
 ## Installation
-
-`make install`
-
