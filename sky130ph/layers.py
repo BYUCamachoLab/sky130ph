@@ -62,6 +62,7 @@ class LayerMap(BaseModel):
     MONITOR: Layer = (101, 0)
 
     class Config:
+        """Config for LayerMap."""
         frozen = True
         extra = "forbid"
 
