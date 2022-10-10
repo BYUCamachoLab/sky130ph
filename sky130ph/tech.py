@@ -1,10 +1,10 @@
-""" technology definitions."""
+"""Technology definitions."""
 import sys
 
 import gdsfactory as gf
 from gdsfactory.cross_section import get_cross_section_factories, strip
 
-from sky130.layers import LAYER
+from sky130ph.layers import LAYER
 
 cross_sections = get_cross_section_factories(sys.modules[__name__])
 
