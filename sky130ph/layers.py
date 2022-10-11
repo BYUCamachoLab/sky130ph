@@ -6,11 +6,7 @@ from sky130ph.config import PATH
 
 
 class LayerMap(BaseModel):
-    """Draft LayerMap for the Skywater photonics PDK.
-
-    TODO Decide on layer "numbers". Do we need to keep electronics layers?
-    """
-
+    """LayerMap for the Skywater photonics PDK."""
     # photonic components layers
     WG: Layer = (1, 0)
     WGCLAD: Layer = (111, 0)
@@ -74,7 +70,6 @@ nm = 1e-3
 
 def get_layer_stack_generic() -> LayerStack:
     """Returns skyph LayerStack."""
-
     # return LayerStack(
     #     layers=dict(
     #         poly=LayerLevel(
