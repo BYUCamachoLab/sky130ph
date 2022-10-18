@@ -7,5 +7,4 @@ __version__ = "0.0.1"
 __author__ = "SkandanC <s39chand@uwaterloo.ca>"
 from typing import List
 
-
 __all__: List[str] = []
