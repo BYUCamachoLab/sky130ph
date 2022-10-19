@@ -2,10 +2,9 @@
 
 
 import gdsfactory.components as gc
-from gdsfactory import cell, Component, get_component
+from gdsfactory import Component, cell, get_component
 from gdsfactory.snap import snap_to_grid
 from gdsfactory.types import ComponentSpec
-
 
 # coupler_lengths = {
 #   power_ratio: {
@@ -53,7 +52,7 @@ def _dbr_cell(
 
           w1       w2
         _______
-               |_________
+    _________
     """
     l1 = snap_to_grid(l1)
     l2 = snap_to_grid(l2)
@@ -105,11 +104,11 @@ def coupler(gap: float = 0.2, power_ratio: float = 0.5):
     .. code::
 
          o2 ________                           ______o3
-                    \                         /           |
-                     \        length         /            |
-                      ======================= gap         | dy
-                     /                       \            |
-            ________/                         \_______    |
+                    \                         /
+                     \                       /
+                      ======================= gap
+                     /                       \
+            ________/                         \_______
          o1                                          o4
 
 
