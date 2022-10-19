@@ -1,8 +1,29 @@
 """Photonic component library."""
 
 
-import gdsfactory as gf
-from gdsfactory import cell, get_component
+import gdsfactory.components as gc
+from gdsfactory import cell, Component, get_component
+from gdsfactory.snap import snap_to_grid
+from gdsfactory.types import ComponentSpec
+
+
+# coupler_lengths = {
+#   power_ratio: {
+#       gap: coupling_length
+#   }
+# }
+coupler_lengths = {
+    0.1: {0.15: 3.74, 0.2: 6.03, 0.25: 13.66, 0.3: 21.24},
+    0.2: {0.15: 5.39, 0.2: 8.68, 0.25: 19.68, 0.3: 30.61},
+    0.3: {0.15: 6.74, 0.2: 10.85, 0.25: 24.61, 0.3: 38.27},
+    0.4: {0.15: 7.96, 0.2: 12.82, 0.25: 29.07, 0.3: 45.2},
+    0.5: {0.15: 9.14, 0.2: 14.71, 0.25: 33.34, 0.3: 51.85},
+    0.6: {0.15: 10.31, 0.2: 16.59, 0.25: 37.61, 0.3: 58.49},
+    0.7: {0.15: 11.53, 0.2: 18.56, 0.25: 42.07, 0.3: 65.43},
+    0.8: {0.15: 12.88, 0.2: 20.73, 0.25: 47.0, 0.3: 73.09},
+    0.9: {0.15: 14.53, 0.2: 23.39, 0.25: 53.02, 0.3: 82.46},
+    1.0: {0.15: 18.27, 0.2: 29.42, 0.25: 66.68, 0.3: 103.7}
+}
 
 
 @cell
@@ -11,8 +32,8 @@ def _dbr_cell(
     w2: float = 0.65,
     l1: float = 0.288,
     l2: float = 0.288,
-    straight: gf.types.ComponentSpec = gf.components.straight,
-) -> gf.Component:
+    straight: ComponentSpec = gc.straight,
+) -> Component:
     """Distributed Bragg Reflector unit cell.
 
     Args:
@@ -34,11 +55,11 @@ def _dbr_cell(
         _______
                |_________
     """
-    l1 = gf.snap.snap_to_grid(l1)
-    l2 = gf.snap.snap_to_grid(l2)
-    w1 = gf.snap.snap_to_grid(w1, 2)
-    w2 = gf.snap.snap_to_grid(w2, 2)
-    c = gf.Component()
+    l1 = snap_to_grid(l1)
+    l2 = snap_to_grid(l2)
+    w1 = snap_to_grid(w1, 2)
+    w2 = snap_to_grid(w2, 2)
+    c = Component()
     c1 = c << get_component(straight, length=l1, width=w1, cross_section="nitride")
     c2 = c << get_component(straight, length=l2, width=w2, cross_section="strip")
     c2.connect(port="o1", destination=c1.ports["o2"])
@@ -47,8 +68,8 @@ def _dbr_cell(
     return c
 
 
-@gf.cell
-def dbr() -> gf.Component:
+@gc.cell
+def dbr() -> Component:
     """Distributed Bragg Reflector.
 
     .. code::
@@ -62,12 +83,12 @@ def dbr() -> gf.Component:
     |       |_______|
     |_______|       |_______
     """
-    c = gf.Component()
-    l1 = gf.snap.snap_to_grid(0.288)
-    l2 = gf.snap.snap_to_grid(0.288)
+    c = Component()
+    l1 = snap_to_grid(0.288)
+    l2 = snap_to_grid(0.288)
     cell = _dbr_cell()
     c.add_array(cell, columns=10, rows=1, spacing=(l1 + l2, 100))
-    starting_rect = c << gf.get_component(
+    starting_rect = c << get_component(
         "straight", length=l2, width=0.65, cross_section="strip"
     )
     starting_rect.move(starting_rect.center, (-0.144, 0))
@@ -77,9 +98,29 @@ def dbr() -> gf.Component:
     return c
 
 
+@cell
+def coupler(gap: float = 0.2, power_ratio: float = 0.5):
+    """Return a symmetric coupler.
+    
+    .. code::
+
+    o2 ________                           ______o3
+               \                         /       
+                \                       /        
+                 ======================= gap     
+                /                       \        
+       ________/                         \_______
+    o1                                          o4
+
+    Args:
+        gap: coupling gap (um) (0.15, 0.2, 0.25, 0.3)
+        power_ratio: float (0.1, 0.2, 0.3, ... 1)
+    """
+    return gc.coupler(gap, coupler_lengths[power_ratio][gap])
+
+
 if __name__ == "__main__":
     import gdsfactory as gf
 
-    c = dbr()
+    c = coupler()
     c.show()
-    print(c.to_yaml())
