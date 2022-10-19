@@ -30,6 +30,6 @@ jobs:
           pip install flake8 pytest
       - name: Lint with flake8
         run: |
-          flake8 .
+          flake8 --ignore=D .
       - name: Test with pytest
         run: pytest
