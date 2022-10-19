@@ -101,16 +101,17 @@ def dbr() -> Component:
 @cell
 def coupler(gap: float = 0.2, power_ratio: float = 0.5):
     """Return a symmetric coupler.
-    
+
     .. code::
 
-    o2 ________                           ______o3
-               \                         /       
-                \                       /        
-                 ======================= gap     
-                /                       \        
-       ________/                         \_______
-    o1                                          o4
+         o2 ________                           ______o3
+                    \                         /           |
+                     \        length         /            |
+                      ======================= gap         | dy
+                     /                       \            |
+            ________/                         \_______    |
+         o1                                          o4
+
 
     Args:
         gap: coupling gap (um) (0.15, 0.2, 0.25, 0.3)
@@ -120,7 +121,5 @@ def coupler(gap: float = 0.2, power_ratio: float = 0.5):
 
 
 if __name__ == "__main__":
-    import gdsfactory as gf
-
     c = coupler()
     c.show()
