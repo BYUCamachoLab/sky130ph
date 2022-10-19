@@ -1,4 +1,4 @@
-from recommonmark.transform import AutoStructify
+# from recommonmark.transform import AutoStructify
 
 project = "sky130ph"
 version = "0.0.1"

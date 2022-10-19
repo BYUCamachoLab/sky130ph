@@ -68,7 +68,7 @@ def _dbr_cell(
     return c
 
 
-@gc.cell
+@cell
 def dbr() -> Component:
     """Distributed Bragg Reflector.
 
