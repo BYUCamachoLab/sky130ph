@@ -2,7 +2,8 @@
 
 
 import gdsfactory.components as gc
-from gdsfactory import Component, cell, get_component
+import gdsfactory as gf
+from gdsfactory import Component, cell
 from gdsfactory.snap import snap_to_grid
 from gdsfactory.types import ComponentSpec
 
@@ -59,8 +60,8 @@ def _dbr_cell(
     w1 = snap_to_grid(w1, 2)
     w2 = snap_to_grid(w2, 2)
     c = Component()
-    c1 = c << get_component(straight, length=l1, width=w1, cross_section="nitride")
-    c2 = c << get_component(straight, length=l2, width=w2, cross_section="strip")
+    c1 = c << gf.get_component(straight, length=l1, width=w1, cross_section="nitride")
+    c2 = c << gf.get_component(straight, length=l2, width=w2, cross_section="strip")
     c2.connect(port="o1", destination=c1.ports["o2"])
     c.add_port("o1", port=c1.ports["o1"])
     c.add_port("o2", port=c2.ports["o2"])
@@ -87,7 +88,7 @@ def dbr() -> Component:
     l2 = snap_to_grid(0.288)
     cell = _dbr_cell()
     c.add_array(cell, columns=10, rows=1, spacing=(l1 + l2, 100))
-    starting_rect = c << get_component(
+    starting_rect = c << gf.get_component(
         "straight", length=l2, width=0.65, cross_section="strip"
     )
     starting_rect.move(starting_rect.center, (-0.144, 0))
@@ -98,7 +99,7 @@ def dbr() -> Component:
 
 
 @cell
-def coupler(gap: float = 0.2, power_ratio: float = 0.5):
+def coupler(gap: float = 0.2, power_ratio: float = 0.5) -> Component:
     """Return a symmetric coupler.
 
     .. code::
@@ -116,9 +117,13 @@ def coupler(gap: float = 0.2, power_ratio: float = 0.5):
         gap: coupling gap (um) (0.15, 0.2, 0.25, 0.3)
         power_ratio: float (0.1, 0.2, 0.3, ... 1)
     """
-    return gc.coupler(gap, coupler_lengths[power_ratio][gap])
+    return gc.coupler(gap, coupler_lengths[round(power_ratio, 2)][round(gap, 2)])
 
 
 if __name__ == "__main__":
+    cells = {
+        'dbr': dbr,
+        'coupler': coupler,
+    }
     c = coupler()
     c.show()
