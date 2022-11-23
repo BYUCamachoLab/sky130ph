@@ -29,3 +29,13 @@ setup(
         "Programming Language :: Python :: 3.7",
     ],
 )
+
+try:
+    from gdsfactory.install import _install_to_klayout
+    import pathlib
+    cwd = pathlib.Path(__file__).resolve().parent
+    _install_to_klayout(
+        src=cwd / "sky130ph" / "klayout", klayout_subdir_name="macros", package_name="sky130ph"
+    )
+except:
+    pass
