@@ -26,6 +26,15 @@ coupler_lengths = {
 }
 
 
+adiabatic_bend_90_p_values = {
+    1: 0.2,
+    2: 0.8,
+    3: 0.2,
+    4: 0.8,
+    5: 0.8
+}
+
+
 @cell
 def _dbr_cell(
     w1: float = 0.5,
@@ -120,10 +129,16 @@ def coupler(gap: float = 0.2, power_ratio: float = 0.5) -> Component:
     return gc.coupler(gap, coupler_lengths[round(power_ratio, 2)][round(gap, 2)])
 
 
+@cell
+def adiabatic_bend_90(radius: float = 1):
+    """Returns adiabatic bend 90 degrees.add()
+    
+    Args:
+        radius: bend radius. (From [1, 2, 3, 4, 5])
+    """
+    return gc.bend_euler(radius=radius, p=adiabatic_bend_90_p_values[radius])
+
+
 if __name__ == "__main__":
-    cells = {
-        'dbr': dbr,
-        'coupler': coupler,
-    }
-    c = coupler()
+    c = adiabatic_bend_90()
     c.show()
