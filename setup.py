@@ -1,3 +1,6 @@
+import pathlib
+
+from gdsfactory.install import _install_to_klayout
 from setuptools import find_packages, setup
 
 with open("README.md") as f:
@@ -5,7 +8,7 @@ with open("README.md") as f:
 
 
 def get_install_requires():
-    with open("requirements.txt", "r") as f:
+    with open("requirements.txt") as f:
         return [line.strip() for line in f.readlines() if not line.startswith("-")]
 
 
@@ -30,12 +33,9 @@ setup(
     ],
 )
 
-try:
-    from gdsfactory.install import _install_to_klayout
-    import pathlib
-    cwd = pathlib.Path(__file__).resolve().parent
-    _install_to_klayout(
-        src=cwd / "sky130ph" / "klayout", klayout_subdir_name="macros", package_name="sky130ph"
-    )
-except:
-    pass
+cwd = pathlib.Path(__file__).resolve().parent
+_install_to_klayout(
+    src=cwd / "sky130ph" / "klayout",
+    klayout_subdir_name="macros",
+    package_name="sky130ph",
+)
