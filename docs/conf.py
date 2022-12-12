@@ -33,7 +33,7 @@ extensions = [
     "sphinx_markdown_tables",
     "sphinx_copybutton",
     "sphinxcontrib.autodoc_pydantic",
-    "sphinx.ext.autosummary",
+    # "sphinx.ext.autosummary",
     "sphinx.ext.extlinks",
 ]
 
