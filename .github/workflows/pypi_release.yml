@@ -4,7 +4,7 @@ on:
   push:
     tags: "v*"
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   release_pypi:
