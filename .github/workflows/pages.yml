@@ -38,4 +38,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3.6.1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: skywater_130_photonics_pdk/_build/html
+        publish_dir: docs/_build/html
