@@ -3,7 +3,7 @@
 TODO Create LayerStack, component library, and activate it here.
 """
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 __author__ = "SkandanC <s39chand@uwaterloo.ca>"
 from typing import List
 
