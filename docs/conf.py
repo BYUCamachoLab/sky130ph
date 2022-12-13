@@ -86,6 +86,13 @@ autodoc_pydantic_model_show_config_summary = False
 autodoc_pydantic_model_show_validator_summary = False
 autodoc_pydantic_model_show_validator_members = False
 
+html_context = {
+    "github_user": "BYUCamachoLab",
+    "github_repo": "sky130ph",
+    "github_version": "main",
+    "doc_path": "./docs",
+}
+
 
 autodoc_default_options = {
     "member-order": "bysource",
