@@ -8,7 +8,7 @@ copyright = "2022"
 
 # html_theme = "furo"
 # html_theme = "sphinx_rtd_theme"
-html_theme = "sphinx_book_theme"
+html_theme = "pydata_sphinx_theme"
 
 source_suffix = {
     ".rst": "restructuredtext",
