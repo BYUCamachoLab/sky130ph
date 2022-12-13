@@ -5,13 +5,7 @@ https://byucamacholab.github.io/sky130ph/
 
 ## Installation
 
-As of now, this PDK is not on PyPI.
-
-So, to install it, you would need to:
-
-1. Clone the repo
-2. cd into the repo
-3. Run `pip install -e .`
+`pip install sky130ph`
 
 ## TODO
 
