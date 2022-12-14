@@ -89,11 +89,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Skywater 130 Photonics PDK</h1>
@@ -369,6 +364,13 @@ title="Print to PDF"
 </dl>
 </dd></dl>
 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">plot</span><span class="p">::</span>
+    <span class="p">:</span><span class="n">include</span><span class="o">-</span><span class="n">source</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sky130ph.components</span> <span class="k">as</span> <span class="nn">skyc</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">skyc</span><span class="o">.</span><span class="n">adiabatic_bend_90</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
 <section id="coupler">
 <h2>coupler<a class="headerlink" href="#coupler" title="Permalink to this headline">#</a></h2>
