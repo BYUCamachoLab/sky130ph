@@ -73,7 +73,7 @@ def _dbr_cell(
 
 @cell
 def dbr() -> Component:
-    """Distributed Bragg Reflector.
+    r"""Distributed Bragg Reflector.
 
     .. code::
 
@@ -124,7 +124,7 @@ def coupler(gap: float = 0.2, power_ratio: float = 0.5) -> Component:
 
 
 @cell
-def adiabatic_bend_90(radius: float = 1):
+def adiabatic_bend_90(radius: float = 1) -> Component:
     """Returns adiabatic bend 90 degrees.add().
 
     Args:
