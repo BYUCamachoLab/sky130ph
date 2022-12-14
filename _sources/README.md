@@ -1,4 +1,4 @@
-# sky130ph v0.0.5
+# sky130ph v0.0.6
 
 Skywater photonics PDK for the SKY130 process node. The documentation is at https://byucamacholab.github.io/sky130ph/
 
