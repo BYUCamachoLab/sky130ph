@@ -27,6 +27,7 @@ jobs:
         pip install -r requirements.txt
         pip install -e .
         pip install jupyter-book
+        pip install myst-parser
 
     # Build the book
     - name: Build the book
