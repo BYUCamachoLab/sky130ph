@@ -164,6 +164,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/BYUCamachoLab/Skywater 130 Photonics PDK/main?urlpath=tree/docs/components.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -231,7 +260,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/components.md"
+        <a href="_sources/components.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -242,7 +271,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -290,17 +319,24 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adiabatic-bend-90">
-   adiabatic_bend_90
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Photonic Components
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adiabatic-bend-90">
+     adiabatic_bend_90
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coupler">
    coupler
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dbr">
    dbr
   </a>
@@ -324,17 +360,24 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adiabatic-bend-90">
-   adiabatic_bend_90
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Photonic Components
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adiabatic-bend-90">
+     adiabatic_bend_90
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coupler">
    coupler
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dbr">
    dbr
   </a>
@@ -354,64 +397,63 @@ title="Print to PDF"
 <h1>Photonic Components<a class="headerlink" href="#photonic-components" title="Permalink to this headline">#</a></h1>
 <section id="adiabatic-bend-90">
 <h2>adiabatic_bend_90<a class="headerlink" href="#adiabatic-bend-90" title="Permalink to this headline">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="sky130ph.components.adiabatic_bend_90">
-<span class="sig-prename descclassname"><span class="pre">sky130ph.components.</span></span><span class="sig-name descname"><span class="pre">adiabatic_bend_90</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">gdsfactory.component.Component</span></span></span><a class="headerlink" href="#sky130ph.components.adiabatic_bend_90" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns adiabatic bend 90 degrees.add().</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>radius: bend radius. (From [1, 2, 3, 4, 5])</p>
-</dd>
-</dl>
-</dd></dl>
-
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">plot</span><span class="p">::</span>
-    <span class="p">:</span><span class="n">include</span><span class="o">-</span><span class="n">source</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">sky130ph.components</span> <span class="k">as</span> <span class="nn">skyc</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">skyc</span><span class="o">.</span><span class="n">adiabatic_bend_90</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```{eval-rst}
+.. autofunction:: sky130ph.components.adiabatic_bend_90
+```
 </pre></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sky130ph.components as sky130ph
+
+c = sky130ph.adiabatic_bend_90()
+c.plot()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-12-14 18:18:59.273 | INFO     | gdsfactory.config:&lt;module&gt;:48 - Load &#39;/opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/gdsfactory&#39; 6.9.0
+</pre></div>
+</div>
+<img alt="_images/components_3_1.png" src="_images/components_3_1.png" />
+<img alt="_images/components_3_2.png" src="_images/components_3_2.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="coupler">
-<h2>coupler<a class="headerlink" href="#coupler" title="Permalink to this headline">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="sky130ph.components.coupler">
-<span class="sig-prename descclassname"><span class="pre">sky130ph.components.</span></span><span class="sig-name descname"><span class="pre">coupler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power_ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">gdsfactory.component.Component</span></span></span><a class="headerlink" href="#sky130ph.components.coupler" title="Permalink to this definition">#</a></dt>
-<dd><p>Return a symmetric coupler.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">o2</span> <span class="n">________</span>                           <span class="n">______o3</span>
-           \                         <span class="o">/</span>
-            \                       <span class="o">/</span>
-             <span class="o">=======================</span> <span class="n">gap</span>
-            <span class="o">/</span>                       \
-   <span class="n">________</span><span class="o">/</span>                         \<span class="n">_______</span>
-<span class="n">o1</span>                                          <span class="n">o4</span>
+<h1>coupler<a class="headerlink" href="#coupler" title="Permalink to this headline">#</a></h1>
+<p>..autofunction:: sky130ph.components.coupler()</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sky130ph.components as sky130ph
+c = sky130ph.coupler()
+c.plot()
 </pre></div>
 </div>
-<dl class="simple">
-<dt>Args:</dt><dd><p>gap: coupling gap (um) (0.15, 0.2, 0.25, 0.3)
-power_ratio: float (0.1, 0.2, 0.3, … 1)</p>
-</dd>
-</dl>
-</dd></dl>
-
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/components_5_0.png" src="_images/components_5_0.png" />
+<img alt="_images/components_5_1.png" src="_images/components_5_1.png" />
+</div>
+</div>
 </section>
 <section id="dbr">
-<h2>dbr<a class="headerlink" href="#dbr" title="Permalink to this headline">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="sky130ph.components.dbr">
-<span class="sig-prename descclassname"><span class="pre">sky130ph.components.</span></span><span class="sig-name descname"><span class="pre">dbr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">gdsfactory.component.Component</span></span></span><a class="headerlink" href="#sky130ph.components.dbr" title="Permalink to this definition">#</a></dt>
-<dd><p>Distributed Bragg Reflector.</p>
-<p>0.288um 0.288um
-&lt;——-&gt;&lt;——&gt;
-________        _______
-|       <a href="#id1"><span class="problematic" id="id2">|_______|</span></a>
-|       |       |
-| 0.5um | 0.65um|       …  10 times
-|       <a href="#id3"><span class="problematic" id="id4">|_______|</span></a>
-<a href="#id5"><span class="problematic" id="id6">|_______|</span></a>       <a href="#id1"><span class="problematic" id="id2">|</span></a>_______</p>
-</dd></dl>
-
-</section>
+<h1>dbr<a class="headerlink" href="#dbr" title="Permalink to this headline">#</a></h1>
+<p>..autofunction:: sky130ph.components.dbr()</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sky130ph.components as sky130ph
+c = sky130ph.dbr()
+c.plot()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/components_7_0.png" src="_images/components_7_0.png" />
+<img alt="_images/components_7_1.png" src="_images/components_7_1.png" />
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
