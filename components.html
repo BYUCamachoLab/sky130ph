@@ -359,15 +359,56 @@ title="Print to PDF"
 <h1>Photonic Components<a class="headerlink" href="#photonic-components" title="Permalink to this headline">#</a></h1>
 <section id="adiabatic-bend-90">
 <h2>adiabatic_bend_90<a class="headerlink" href="#adiabatic-bend-90" title="Permalink to this headline">#</a></h2>
-<p>.. autofunction:: sky130ph.components.adiabatic_bend_90</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sky130ph.components.adiabatic_bend_90">
+<span class="sig-prename descclassname"><span class="pre">sky130ph.components.</span></span><span class="sig-name descname"><span class="pre">adiabatic_bend_90</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sky130ph.components.adiabatic_bend_90" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns adiabatic bend 90 degrees.add().</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>radius: bend radius. (From [1, 2, 3, 4, 5])</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="coupler">
 <h2>coupler<a class="headerlink" href="#coupler" title="Permalink to this headline">#</a></h2>
-<p>.. autofunction:: sky130ph.components.coupler</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sky130ph.components.coupler">
+<span class="sig-prename descclassname"><span class="pre">sky130ph.components.</span></span><span class="sig-name descname"><span class="pre">coupler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power_ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">gdsfactory.component.Component</span></span></span><a class="headerlink" href="#sky130ph.components.coupler" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a symmetric coupler.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">o2</span> <span class="n">________</span>                           <span class="n">______o3</span>
+           \                         <span class="o">/</span>
+            \                       <span class="o">/</span>
+             <span class="o">=======================</span> <span class="n">gap</span>
+            <span class="o">/</span>                       \
+   <span class="n">________</span><span class="o">/</span>                         \<span class="n">_______</span>
+<span class="n">o1</span>                                          <span class="n">o4</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Args:</dt><dd><p>gap: coupling gap (um) (0.15, 0.2, 0.25, 0.3)
+power_ratio: float (0.1, 0.2, 0.3, … 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="dbr">
 <h2>dbr<a class="headerlink" href="#dbr" title="Permalink to this headline">#</a></h2>
-<p>.. autofunction:: sky130ph.components.dbr</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sky130ph.components.dbr">
+<span class="sig-prename descclassname"><span class="pre">sky130ph.components.</span></span><span class="sig-name descname"><span class="pre">dbr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">gdsfactory.component.Component</span></span></span><a class="headerlink" href="#sky130ph.components.dbr" title="Permalink to this definition">#</a></dt>
+<dd><p>Distributed Bragg Reflector.</p>
+<p>0.288um 0.288um
+&lt;——-&gt;&lt;——&gt;
+________        _______
+|       <a href="#id1"><span class="problematic" id="id2">|_______|</span></a>
+|       |       |
+| 0.5um | 0.65um|       …  10 times
+|       <a href="#id3"><span class="problematic" id="id4">|_______|</span></a>
+<a href="#id5"><span class="problematic" id="id6">|_______|</span></a>       <a href="#id1"><span class="problematic" id="id2">|</span></a>_______</p>
+</dd></dl>
+
 </section>
 </section>
 
