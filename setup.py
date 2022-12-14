@@ -14,7 +14,7 @@ def get_install_requires():
 
 setup(
     name="sky130ph",
-    version="0.0.5",
+    version="0.0.6",
     url="https://github.com/joamatab/cookiecutter-pypackage-minimal",
     license="MIT",
     author="SkandanC",
