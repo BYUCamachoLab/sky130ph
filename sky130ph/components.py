@@ -1,8 +1,8 @@
 """Photonic component library."""
 
 
-import gdsfactory.components as gc
 import gdsfactory as gf
+import gdsfactory.components as gc
 from gdsfactory import Component, cell
 from gdsfactory.snap import snap_to_grid
 from gdsfactory.types import ComponentSpec
@@ -22,8 +22,11 @@ coupler_lengths = {
     0.7: {0.15: 11.53, 0.2: 18.56, 0.25: 42.07, 0.3: 65.43},
     0.8: {0.15: 12.88, 0.2: 20.73, 0.25: 47.0, 0.3: 73.09},
     0.9: {0.15: 14.53, 0.2: 23.39, 0.25: 53.02, 0.3: 82.46},
-    1.0: {0.15: 18.27, 0.2: 29.42, 0.25: 66.68, 0.3: 103.7}
+    1.0: {0.15: 18.27, 0.2: 29.42, 0.25: 66.68, 0.3: 103.7},
 }
+
+
+adiabatic_bend_90_p_values = {1.0: 0.2, 2.0: 0.8, 3.0: 0.2, 4.0: 0.8, 5.0: 0.8}
 
 
 @cell
@@ -70,7 +73,7 @@ def _dbr_cell(
 
 @cell
 def dbr() -> Component:
-    """Distributed Bragg Reflector.
+    r"""Distributed Bragg Reflector.
 
     .. code::
 
@@ -100,7 +103,7 @@ def dbr() -> Component:
 
 @cell
 def coupler(gap: float = 0.2, power_ratio: float = 0.5) -> Component:
-    """Return a symmetric coupler.
+    r"""Return a symmetric coupler.
 
     .. code::
 
@@ -120,10 +123,16 @@ def coupler(gap: float = 0.2, power_ratio: float = 0.5) -> Component:
     return gc.coupler(gap, coupler_lengths[round(power_ratio, 2)][round(gap, 2)])
 
 
+@cell
+def adiabatic_bend_90(radius: float = 1) -> Component:
+    """Returns adiabatic bend 90 degrees.add().
+
+    Args:
+        radius: bend radius. (From [1, 2, 3, 4, 5])
+    """
+    return gc.bend_euler(radius=radius, p=adiabatic_bend_90_p_values[radius])
+
+
 if __name__ == "__main__":
-    cells = {
-        'dbr': dbr,
-        'coupler': coupler,
-    }
-    c = coupler()
+    c = adiabatic_bend_90()
     c.show()

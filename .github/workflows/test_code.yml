@@ -1,35 +1,44 @@
-name: Test code and lint
+name: Test pre-commit, code and docs
 
 on:
   pull_request:
+    branches:
+      - main
   push:
-  schedule:
-    - cron: 0 2 * * * # run at 2 AM UTC
+    branches:
+      - main
 
 jobs:
-  build:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+      - uses: pre-commit/action@v3.0.0
+
+  test_code:
+    needs: [pre-commit]
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 12
       matrix:
-        python-version: [3.8, 3.9, "3.10"]
-        os: [ubuntu-latest]
+        python-version: ["3.10"]
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
-      - name: Cancel Workflow Action
-        uses: styfle/cancel-workflow-action@0.10.1
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'pip'
+          cache: "pip"
+          cache-dependency-path: requirements.txt
       - name: Install dependencies
         run: |
-          pip install -e .
-          pip install flake8 pytest
+          pip install -r requirements_dev.txt
+          pip install -r requirements.txt
       - name: Lint with flake8
         run: |
-          flake8 --ignore=W605 .
+          flake8 .
       - name: Test with pytest
         run: pytest
