@@ -28,7 +28,7 @@ jobs:
         id: get_version
         run: echo "VERSION=$(python3 -c "import sky130ph; print(sky130ph.__version__)")" >> $GITHUB_ENV
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.1.0
+        uses: pypa/gh-action-pypi-publish@v1.6.4
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
